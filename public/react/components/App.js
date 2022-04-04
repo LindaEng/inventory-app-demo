@@ -31,7 +31,7 @@ export const App = () => {
 		<main>	
       <h1>Better Buys</h1>
 			<h2>All things are Better at Better Buys</h2>
-			<button onClick={() => setIsAddingItem(true)}>Add Item</button>
+			<button className={isAddingItem ? 'btn-danger' : ''} onClick={() => setIsAddingItem(!isAddingItem)}>{isAddingItem ? 'Cancel' : 'Add Item'}</button>
 			{ isAddingItem && <ItemAdd setIsAddingItem={setIsAddingItem} fetchItems={fetchItems} /> }
 			{
 				selectedItem

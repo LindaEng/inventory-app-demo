@@ -32,7 +32,6 @@ export const ItemAdd = ({setIsAddingItem, fetchItems}) => {
 
   return <div className="item-container" id="item-add">
     <h3>Add Item</h3>
-    <span><button className="detail-span" onClick={() => setIsAddingItem(false)}>Cancel</button></span>
     <form className='form-input-list' onSubmit={handleSubmit}>
       <label>Title:</label>
       <input type="text" name="title" value={title} onChange={(ev) => setTitle(ev.target.value)}/>
@@ -42,7 +41,10 @@ export const ItemAdd = ({setIsAddingItem, fetchItems}) => {
       <input type="text" name="category" value={category} onChange={(ev) => setCategory(ev.target.value)}/>
       <label>Description:</label>
       <textarea name="description" value={description} onChange={(ev) => setDescription(ev.target.value)}/>
-      <button type="submit">Submit</button>
+      <span className='options-container'>
+        <button type="submit">Submit</button>
+        <button className='btn-danger' onClick={() => setIsAddingItem(false)}>Cancel</button>
+      </span>
     </form>
   </div>
 }

@@ -72,6 +72,22 @@ button {
   margin-bottom: .5rem;
 }
 
+.options-container {
+  display: flex;
+  flex-direction: row;
+  margin: .5rem 0;
+}
+
+.options-container > * {
+  margin: .2rem .2rem .2rem 0;
+}
+
+.btn-danger {
+  background-color: rgb(128, 33, 36, 0.5);
+  border: .1rem solid #A82B30;
+  color: #A82B30;
+}
+
 img {
   max-width:40%;
   padding: .5rem;

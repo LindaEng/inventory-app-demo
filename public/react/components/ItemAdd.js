@@ -23,6 +23,10 @@ export const ItemAdd = ({setIsAddingItem, fetchItems}) => {
           },
         body: JSON.stringify(newItem),
       });
+      setTitle('');
+      setPrice(0);
+      setCategory('');
+      setDescription('');
       setIsAddingItem(false);
       fetchItems();
     } catch (err) {

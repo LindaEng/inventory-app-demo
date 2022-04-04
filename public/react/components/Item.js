@@ -2,12 +2,12 @@ import React from 'react';
 
 export const Item = ({item, setSelectedItem, children}) => {
 
-  return <div class="item-container">
+  return <div className="item-container">
     <h3>{item.title}</h3>
-    <p class="price-box">
+    <div className="price-box">
       <div>${item.price}</div>
-      <button class="detail-button" onClick={() => setSelectedItem(children ? null : item)}>{children ? 'Back to Items' : 'Details'}</button>
-    </p>
+      <button className="detail-button" onClick={() => setSelectedItem(children ? null : item)}>{children ? 'Back to Items' : 'Details'}</button>
+    </div>
     {children}
     <img src={item.image} alt={item.title} />
   </div>

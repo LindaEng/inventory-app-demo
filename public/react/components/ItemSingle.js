@@ -5,7 +5,7 @@ export const ItemSingle = ({item, setSelectedItem}) => {
 
   return <Item item={item} setSelectedItem={setSelectedItem}>
     <h3>Category: {item.category}</h3>
-    <p>{item.description}</p>
+    <div>{item.description}</div>
   </Item>
 }
 	

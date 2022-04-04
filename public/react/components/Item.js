@@ -1,7 +1,7 @@
 import React from 'react';
 import apiURL from '../api';
 
-export const Item = ({item, setSelectedItem, fetchItems, children}) => {
+export const Item = ({item, setSelectedItem, fetchItems, children, editButton}) => {
 
   const handleDelete = async () => {
     try {
@@ -21,6 +21,7 @@ export const Item = ({item, setSelectedItem, fetchItems, children}) => {
       <div>${item.price}</div>
       <button onClick={() => setSelectedItem(children ? null : item)}>{children ? 'Back to Items' : 'Details'}</button>
       {children && <button className="btn-danger" onClick={handleDelete}>Delete</button> }
+      {editButton}
     </div>
     {children}
     <img src={item.image} alt={item.title} />

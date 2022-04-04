@@ -40,4 +40,28 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+// PUT /items/:id
+router.put("/:id", async (req, res, next) => {
+  try {
+    const [_, success] = await Item.update(
+      req.body
+      ,
+      {
+        where: {
+          id: req.params.id,
+        },
+        returning: true
+      }
+    );
+    
+    if(success) {
+      res.send('successfully edited item' + req.params.id);
+    } else {
+      next({message: 'error editing item ' + req.params.id});
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

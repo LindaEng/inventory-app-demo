@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import apiURL from '../api';
 import { ItemForm } from './ItemForm';
 
-export const ItemAdd = ({setIsAddingItem, fetchItems}) => {
+export const ItemEdit = ({item: originalItem, setIsEditing, fetchItems, setSelectedItem}) => {
   const initialItem = {
     title: '',
     price: 0,
@@ -10,20 +10,21 @@ export const ItemAdd = ({setIsAddingItem, fetchItems}) => {
     description: '',
     image: ''
   };
-  const [item, setItem] = useState(initialItem);
+  const [item, setItem] = useState(originalItem);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`${apiURL}/items`, {
-        method: 'POST',
+      await fetch(`${apiURL}/items/${originalItem.id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           },
         body: JSON.stringify(item),
       });
       setItem(initialItem);
-      setIsAddingItem(false);
+      setIsEditing(false);
+      setSelectedItem(null);
       fetchItems();
     } catch (err) {
       console.log('Error: ', err);
@@ -31,12 +32,12 @@ export const ItemAdd = ({setIsAddingItem, fetchItems}) => {
   };
 
   return <ItemForm
-    cancelFunction={setIsAddingItem}
+    cancelFunction={setIsEditing}
     fetchItems={fetchItems}
     item={item}
     handleSubmit={handleSubmit}
     setItem={setItem}
-    method={'add'}
+    method={'edit'}
   />
 }
 	

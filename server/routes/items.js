@@ -22,4 +22,22 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// DELETE /items/:id
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const success = await Item.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+    if(success) {
+      res.send('successfully deleted item' + req.params.id);
+    } else {
+      next({message: 'error deleting item ' + req.params.id});
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

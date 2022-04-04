@@ -35,7 +35,7 @@ export const App = () => {
 			{ isAddingItem && <ItemAdd setIsAddingItem={setIsAddingItem} fetchItems={fetchItems} /> }
 			{
 				selectedItem
-					? <ItemSingle item={selectedItem} setSelectedItem={setSelectedItem} />
+					? <ItemSingle item={selectedItem} setSelectedItem={setSelectedItem} fetchItems={fetchItems}/>
 					: <ItemsList items={items} setSelectedItem={setSelectedItem} />
 			}
 		</main>
